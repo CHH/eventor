@@ -1,17 +1,19 @@
 {
-    "name": "Eventor",
-    "description": "You totally should use this awesome package.",
+    "name": "chh/eventor",
+    "description": "A sane interface to PHP's libevent extension.",
+    "license": "MIT",
     "authors": [
         {
-            "name": "John Doe",
-            "email": "john.doe@example.com"
+            "name": "Christoph Hochstrasser",
+            "email": "christoph.hochstrasser@gmail.com"
         }
     ],
     "keywords": [
-
+        "libevent"
     ],
     "require": {
-        "php": ">=5.3.3"
+        "php": ">=5.3.3",
+        "ext-libevent": "*"
     },
     "autoload": {
         "psr-0": {
