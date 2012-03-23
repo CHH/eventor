@@ -117,4 +117,9 @@ class Base
         event_base_loopexit($this->handle, $timeout);
         return $this;
     }
+
+    function __destruct()
+    {
+        event_base_free($this->handle);
+    }
 }

@@ -49,4 +49,11 @@ class Event
         }
         return $this;
     }
+
+    function __destruct()
+    {
+        if ($this->handle !== null) {
+            event_free($this->handle);
+        }
+    }
 }
