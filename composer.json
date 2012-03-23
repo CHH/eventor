@@ -1,0 +1,21 @@
+{
+    "name": "Eventor",
+    "description": "You totally should use this awesome package.",
+    "authors": [
+        {
+            "name": "John Doe",
+            "email": "john.doe@example.com"
+        }
+    ],
+    "keywords": [
+
+    ],
+    "require": {
+        "php": ">=5.3.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "Eventor": "lib\/"
+        }
+    }
+}
