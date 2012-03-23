@@ -20,7 +20,7 @@ Then do:
 	% wget http://getcomposer.org/composer.phar
 	% php composer.phar install
 
-## Intro
+## Example
 
 	<?php
 	
@@ -38,7 +38,7 @@ Then do:
 			$event->base->exit();
 		}
 		
-		echo fgets($event->fd);
+		printf("You wrote: %s", fgets($event->fd));
 	});
 	
 	$base->loop();
