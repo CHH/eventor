@@ -63,11 +63,10 @@ class Base
     {
         $ev = event_new();
 
-        $callback = function() use ($event) {
+        event_set($ev, $event->fd, $event->events, function() use ($event) {
             call_user_func($event->callback, $event);
-        };
+        });
 
-        event_set($ev, $event->fd, $event->events, $callback);
         event_base_set($ev, $this->handle);
         event_add($ev);
 
@@ -101,7 +100,7 @@ class Base
     # Stops the event loop immediately.
     #
     # Returns $this.
-    function stop()
+    function halt()
     {
         event_base_loopbreak($this->handle);
         return $this;

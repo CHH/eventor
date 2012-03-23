@@ -12,10 +12,21 @@ class Event
         TIMEOUT = EV_TIMEOUT;
 
     public
+        # Handle to the libevent "event" resource (only available after the
+        # event was added to a base).
         $handle,
+
+        # Instance of the event base (only available after the
+        # event was added to a base).
         $base,
+
+        # File descriptor which should be watched.
         $fd,
+
+        # Combination of event flags.
         $events = 0,
+
+        # Gets called when the event is triggered.
         $callback;
 
     function __construct($fd, $listen = 0, $callback)
@@ -31,7 +42,11 @@ class Event
 
     function setNonPersistent($enable = true)
     {
-        $this->events = $enable ? $this->events ^ self::PERSIST : $this->events | self::PERSIST;
+        if ($enable) {
+            $this->events ^= self::PERSIST;
+        } else {
+            $this->events |= self::PERSIST;
+        }
         return $this;
     }
 }

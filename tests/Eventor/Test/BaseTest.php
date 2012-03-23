@@ -17,7 +17,7 @@ class BaseTest extends \PHPUnit_Framework_TestCase
             fgets($event->fd);
 
             if ($called === 3) {
-                $event->base->stop();
+                $event->base->halt();
             }
         });
 
