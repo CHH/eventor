@@ -15,9 +15,17 @@ class Base
     # callback - Gets called when the event happens.
     #
     # Returns a new instance of \Eventor\Event.
-    static function newEvent($fd, $events = 0, $callback)
+    function newEvent($fd, $events = 0, $callback)
     {
         return new Event($fd, $events, $callback);
+    }
+
+    function newBuffer($fd, $events = 0)
+    {
+        $buffer = new Buffer($fd, $events);
+        $buffer->base = $this;
+
+        return $buffer;
     }
 
     # Initializes the event base.
