@@ -38,8 +38,35 @@ Then do:
 			$event->base->exit();
 		}
 		
-		printf("You wrote: %s", fgets($event->fd));
+		printf("You wrote: %s\n", fgets($event->fd));
 	});
+	
+	$base->loop();
+
+### Buffered Example
+
+	<?php
+	
+	$base = new Eventor\Base;
+	
+	$buffer = $base->newBuffer(STDIN, EV_READ);
+	
+	$buffer->read = function($buffer) {
+		static $requests = 0;
+		$requests++;
+		
+		if ($requests == 10) {
+			$buffer->base->stop();
+		}
+		
+		printf("You wrote: %s\n", $buffer->read(4096));
+	};
+	
+	$buffer->error = function($buffer) {
+		# Handle errors.
+	};
+	
+	$buffer->enable();
 	
 	$base->loop();
 
