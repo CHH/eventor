@@ -64,11 +64,6 @@ class Buffer
         event_buffer_free($this->handle);
     }
 
-    function __destruct()
-    {
-        $this->free();
-    }
-
     protected function getEventHandler($callback)
     {
         if ($callback === null) {

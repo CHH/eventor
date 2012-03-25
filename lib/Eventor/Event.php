@@ -49,4 +49,12 @@ class Event
         }
         return $this;
     }
+
+    function free()
+    {
+        if (!$this->handle) {
+            throw new \UnexpectedValueException("Event is not registered in a base.");
+        }
+        event_free($this->handle);
+    }
 }
