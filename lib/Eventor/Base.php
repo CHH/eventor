@@ -5,7 +5,7 @@ namespace Eventor;
 class Base
 {
     protected
-        # Internal: Handle to libevent's event base.
+        # Handle created with `event_base_new`.
         $handle;
 
     # Factory for events.
