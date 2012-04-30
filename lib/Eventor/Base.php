@@ -42,7 +42,7 @@ class Base
     # Returns an Eventor\Event.
     function read($fd, $callback)
     {
-        $event = $this->newEvent($fd, EV_READ, $callback);
+        $event = $this->newEvent($fd, Event::READ, $callback);
         $this->add($event);
 
         return $event;
@@ -56,7 +56,7 @@ class Base
     # Returns an Eventor\Event.
     function write($fd, $callback)
     {
-        $event = $this->newEvent($fd, EV_WRITE, $callback);
+        $event = $this->newEvent($fd, Event::WRITE, $callback);
         $this->add($event);
 
         return $event;

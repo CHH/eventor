@@ -2,6 +2,9 @@
 
 namespace Eventor;
 
+use InvalidArgumentException,
+    UnexpectedValueException;
+
 class Event
 {
     const
@@ -29,14 +32,14 @@ class Event
         # Gets called when the event is triggered.
         $callback;
 
-    function __construct($fd, $listen = 0, $callback)
+    function __construct($fd, $events = 0, $callback)
     {
         if (!is_callable($callback)) {
-            throw new \InvalidArgumentException("No valid callback given.");
+            throw(new \InvalidArgumentException("No valid callback given."));
         }
 
         $this->fd = $fd;
-        $this->events = $listen | self::PERSIST;
+        $this->events = $events | self::PERSIST;
         $this->callback = $callback;
     }
 
@@ -58,3 +61,4 @@ class Event
         event_free($this->handle);
     }
 }
+
